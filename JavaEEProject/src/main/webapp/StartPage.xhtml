@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+        >
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Start page</title>
+</h:head>
+
+<h:body>
+    <div  style="text-align: center">
+            <p>Павлишин Александр Андреевич</p>
+            <p>Группа P3217</p>
+            <p>Вариант 1755</p>
+
+                <h:form id="clockForm" style="color: #004dff; font-family: sans-serif;margin-bottom: 20px;">
+                    <h:outputLabel id="clockLabel" value="#{clockTimer.date}"/>
+                    <h:commandButton id="clockTimerBtn" style="display: none" action="#{clockTimer.curDate}">
+                            <f:ajax render="clockLabel"/>
+                    </h:commandButton>
+                    <h:outputScript name="js/clock.js"/>
+                </h:form>
+                <h:form>
+                    <p:clock id="clock" mode="#{clock.mode}"/>
+                    <br/>
+                    <p class="select-time"
+                       style="margin-bottom: 0;font-family: sans-serif; color: #004dff">
+                        Select time mode:
+                        <p:selectOneMenu id="modeSelector" value="#{clock.mode}" style="display: inline-block">
+                            <f:selectItem itemLabel="client time" itemValue="client"/>
+                            <f:selectItem itemLabel="server time" itemValue="server"/>
+                        </p:selectOneMenu>
+                    </p>
+                    <p:commandButton value="Change mode" update="clock" style="margin-bottom: 50px"/>
+                </h:form>
+            <h:form>
+                <p:commandButton id="submit" action="toMain" value="Main page"/>
+            </h:form>
+        </div>
+</h:body>
+
+</html>
